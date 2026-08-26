@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://salon-booking-platform.onrender.com/api';
 
 const API = axios.create({ baseURL: API_BASE });
 
