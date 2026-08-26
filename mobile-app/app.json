@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "GlowUp",
+    "slug": "glowup-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#6C3CE1"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.glowup.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#6C3CE1"
+      },
+      "package": "com.glowup.app"
+    },
+    "web": {}
+  }
+}
