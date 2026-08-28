@@ -11,7 +11,8 @@ import ManageStaff from './pages/ManageStaff';
 import ManageAppointments from './pages/ManageAppointments';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  if (loading) return null;
   return user && ['salon_owner', 'staff'].includes(user.role) ? children : <Navigate to="/login" />;
 };
 

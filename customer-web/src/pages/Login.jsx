@@ -15,8 +15,19 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      await login(email, password);
+      const data = await login(email, password);
       toast.success('Welcome back!');
+      const dashboardUrls = {
+        salon_owner: `${import.meta.env.VITE_SALON_DASHBOARD_URL || 'http://localhost:3001'}/services`,
+        staff: `${import.meta.env.VITE_SALON_DASHBOARD_URL || 'http://localhost:3001'}/appointments`,
+        admin: `${import.meta.env.VITE_ADMIN_DASHBOARD_URL || 'http://localhost:3002'}/`
+      };
+      const dashboardUrl = dashboardUrls[data.user.role];
+      if (dashboardUrl) {
+        window.location.assign(`${dashboardUrl}?token=${encodeURIComponent(data.token)}`);
+        return;
+      }
+
       const destination = location.state?.from;
       navigate(destination ? `${destination.pathname}${destination.search}${destination.hash}` : '/', { replace: true });
     } catch (err) {

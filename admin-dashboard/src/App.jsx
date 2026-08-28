@@ -11,7 +11,8 @@ import Appointments from './pages/Appointments';
 import Reviews from './pages/Reviews';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  if (loading) return null;
   return user && user.role === 'admin' ? children : <Navigate to="/login" />;
 };
 
