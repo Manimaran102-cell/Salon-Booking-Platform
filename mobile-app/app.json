@@ -8,7 +8,9 @@
     "splash": {
       "backgroundColor": "#6C3CE1"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.glowup.app"
@@ -19,6 +21,12 @@
       },
       "package": "com.glowup.app"
     },
-    "web": {}
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "038083a7-e75c-432c-823a-d59d9d106431"
+      }
+    },
+    "owner": "marank900"
   }
 }
