@@ -17,7 +17,8 @@ export default function Login() {
     try {
       await login(email, password);
       toast.success('Welcome back!');
-      navigate('/');
+      const destination = location.state?.from;
+      navigate(destination ? `${destination.pathname}${destination.search}${destination.hash}` : '/', { replace: true });
     } catch (err) {
       toast.error(err.response?.data?.message || 'Login failed');
     } finally {

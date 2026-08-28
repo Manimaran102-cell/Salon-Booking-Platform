@@ -6,9 +6,23 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('glowup_user');
-    return saved ? JSON.parse(saved) : null;
+    if (!saved || !localStorage.getItem('glowup_token')) return null;
+
+    try {
+      return JSON.parse(saved);
+    } catch {
+      localStorage.removeItem('glowup_user');
+      localStorage.removeItem('glowup_token');
+      return null;
+    }
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const handleUnauthorized = () => setUser(null);
+    window.addEventListener('glowup:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('glowup:unauthorized', handleUnauthorized);
+  }, []);
 
   const login = async (email, password) => {
     const { data } = await API.post('/auth/login', { email, password });

@@ -15,9 +15,7 @@ API.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('glowup_token');
       localStorage.removeItem('glowup_user');
-      if (window.location.pathname !== '/login') {
-        window.location.href = '/login';
-      }
+      window.dispatchEvent(new Event('glowup:unauthorized'));
     }
     return Promise.reject(error);
   }

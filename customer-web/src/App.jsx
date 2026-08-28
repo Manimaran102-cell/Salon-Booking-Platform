@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +15,9 @@ import Profile from './pages/Profile';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
-  return user ? children : <Navigate to="/login" />;
+  const location = useLocation();
+
+  return user ? children : <Navigate to="/login" replace state={{ from: location }} />;
 };
 
 export default function App() {
@@ -34,6 +36,7 @@ export default function App() {
               <Route path="/book/:salonId" element={<ProtectedRoute><BookAppointment /></ProtectedRoute>} />
               <Route path="/my-bookings" element={<ProtectedRoute><Bookings /></ProtectedRoute>} />
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
           <Footer />
