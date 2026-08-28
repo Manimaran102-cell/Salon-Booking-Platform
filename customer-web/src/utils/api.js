@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://salon-booking-platform.onrender.com/api' });
-
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://salon-booking-platform.onrender.com/api';
 const API = axios.create({ baseURL: API_BASE_URL });
- c6f6441cfc478c391f5a5a17fa55b5891762f2f7
 
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('glowup_token');
