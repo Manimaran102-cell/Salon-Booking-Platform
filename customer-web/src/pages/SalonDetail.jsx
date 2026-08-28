@@ -105,7 +105,13 @@ export default function SalonDetail() {
               {user ? (
                 <Link to={`/book/${salon._id}`} className="btn btn-primary btn-full btn-lg">Book Now</Link>
               ) : (
-                <Link to="/login" className="btn btn-primary btn-full btn-lg">Sign In to Book</Link>
+                <Link
+                  to="/login"
+                  state={{ from: { pathname: `/book/${salon._id}`, search: '', hash: '' } }}
+                  className="btn btn-primary btn-full btn-lg"
+                >
+                  Sign In to Book
+                </Link>
               )}
 
               <div style={{ marginTop: 24, padding: 16, background: 'var(--border-light)', borderRadius: 'var(--radius-sm)', fontSize: 13 }}>
