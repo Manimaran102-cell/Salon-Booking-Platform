@@ -3,8 +3,6 @@
     "name": "GlowUp",
     "version": "1.0.0",
     "orientation": "portrait",
-    }
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -23,11 +21,7 @@
       "eas": {
         "projectId": "038083a7-e75c-432c-823a-d59d9d106431"
       }
-<<<<<<< HEAD
     },
     "owner": "marank900"
-=======
-    }
->>>>>>> 05b0d18 (made some changes)
   }
 }
